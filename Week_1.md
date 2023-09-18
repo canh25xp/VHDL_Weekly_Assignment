@@ -34,10 +34,10 @@ Repeat, using 1’s complement to represent negative numbers
 ## Promblem 2 : Prove using Boolean Algebra
 
 a. $𝐴+𝐵+(𝐴+𝐵)𝐶=𝐴+𝐵$
-
+****
 b. $𝐵'(𝐴+𝐵+𝐶)=𝐵'(𝐴+𝐶)$
 
-c. $(𝐴'+𝐵'+𝐶').(𝐵'+𝐶)(𝐴+𝐵')= 𝐵'$
+c. $(𝐴'+𝐵'+𝐶').(𝐵'+𝐶)(𝐴+𝐵')=𝐵'$
 
 ## Problem 3 :  Simplify the following functions using Karnaugh Maps, draw the circuit.
 
@@ -49,4 +49,19 @@ c. $F(A,B,C,D)=AC'D'+A'C+ABC+AB'C+A'C'D'$
 
 d. $F(A,B,C,D)=A'B'C'D+CD+AC'D$
 
-## Problem 4 : 
+## Problem 4 : Design Sequential Circuit
+
+1. Design the circuit for FSM using JK Flip-Flop.
+
+| Current State (S) | X=0 | X=1 | Output Z |
+| ----------------- | --- | --- | -------- |
+| A                 | F   | B   | 0        |
+| B                 | A   | B   | 1        |
+| C                 | A   | B   | 1        |
+| D                 | F   | B   | 0        |
+| E                 | D   | B   | 1        |
+| F                 | D   | B   | 0        |
+
+
+## Problem 5 : Design a modulo 5 counter that counts from 0 to 4 and wrap around. It counts when the input  X=1 (count enable) and stop counting when X=0. The output Y=1 when count=4
+
