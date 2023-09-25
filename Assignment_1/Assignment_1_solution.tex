@@ -22,7 +22,11 @@ Simplify the following functions using Karnaugh Maps, draw the circuit.
 \subsection*{1. $F(W,X,Y,Z)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$}
 
 \begin{center}
-    \begin{karnaugh-map}[4][4][1][$W$][$X$][$Y$][$Z$]
+    % \begin{karnaugh-map}[4][4][1][$Z$][$Y$][$X$][$W$]
+    %     \manualterms{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+    % \end{karnaugh-map}
+
+    \begin{karnaugh-map}[4][4][1][$Z$][$Y$][$X$][$W$]
         \minterms{0,2,3,8,9,10,11,12,13,14,15}
         \autoterms[0]
         \implicant{12}{10}
@@ -34,8 +38,52 @@ Simplify the following functions using Karnaugh Maps, draw the circuit.
 $\Rightarrow F=W+X'Z'+X'Y$
 
 \subsection*{2. $F(W,X,Y,Z)=\sum m(3,9,11,12,13,14,15) + \sum d(1,4,6)$}
+
+\begin{center}
+    \begin{karnaugh-map}[4][4][1][$Z$][$Y$][$X$][$W$]
+        \minterms{3,9,11,12,13,14,15}
+        \terms{1,4,6}{X}
+        \autoterms[0]
+        \implicant{12}{14}
+        \implicantedge{1}{3}{9}{11}
+    \end{karnaugh-map}
+\end{center}
+
+$\Rightarrow F=WX+X'Z$
+
 \subsection*{3. $F(A,B,C,D)=AC'D'+A'C+ABC+AB'C+A'C'D'$}
+
+\begin{align*}
+    F&=AC'D'+A'C+ABC+AB'C+A'C'D'\\
+    \qquad &=A(C'+D')+A'C+ABC+AB'C+A'C'D'\\
+    \qquad &=A(C'+D')+A'C+ABC+AB'C+A'+C'+D'\\
+    \qquad &=A(C'+D')+ABC+AB'C+A'+C'+D'\\
+    \qquad &=C'+D'+ABC+AB'C+A'+C'+D'\\
+    \qquad &=C'+D'+ABC+AB'C+A'+D'\\
+    \qquad &=C'+D'+ABC+AB'C+A'\\
+    \qquad &=C'+D'+AC(B+B')+A'\\
+    \qquad &=C'+D'+AC1+A'\\
+    \qquad &=C'+D'+AC+A'\\
+    \qquad &=C'+D'+A+A'\\
+    \qquad &=C'+D'+1\\
+    \qquad &=1
+\end{align*}
+
 \subsection*{4. $F(A,B,C,D)=A'B'C'D+CD+AC'D$}
+
+\begin{align*}
+    F&=A'B'C'D+CD+AC'D\\
+    \qquad &=(A'+B'+C')D+CD+AC'D\\
+    \qquad &=(A'+B'+C')D+D(C+AC')\\
+    \qquad &=DA'+DB'+DC'+D(A+C)\\
+    \qquad &=DA'+DB'+DC'+DA+DC\\
+    \qquad &=D(A+A')+DB'+DC'+DC\\
+    \qquad &=D1+DB'+DC'+DC\\
+    \qquad &=D+DB'+DC'+DC\\
+    \qquad &=D+DC'+DC\\
+    \qquad &=D+DC\\
+    \qquad &=D\\
+\end{align*}
 
 \section*{Promblem 2 : Design Sequential Circuit}
 
@@ -54,14 +102,5 @@ $\Rightarrow F=W+X'Z'+X'Y$
 \end{center}
 
 For the given state table, design the circuit for FSM using JK Flip-Flop.
-
-\pagebreak
-\section*{Promblem 3 : ModelSim}
-
-\begin{enumerate}
-    \item Install ModelSim
-    \item Read ModelSim Tutorial book: \emph{Chapter 1: Introduction, Chapter 2: Conceptual Overview}
-    \item Step by step do \emph{Chapter 3: Basic Simulation, Chapter 4: Projects in ModelSim Tutorial book}
-\end{enumerate}
 
 \end{document}
