@@ -1,14 +1,14 @@
-\documentclass[12pt, letterpaper]{article}
+\documentclass[12pt]{article}
 \usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{karnaugh-map}
-\usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{circuitikz}
-% \usepackage[utf8]{inputenc}
-% \usepackage[english]{babel}
-% \usepackage[]{amsthm} %lets us use \begin{proof}
-% \usepackage[]{amssymb} %gives us the character \varnothing
+\usepackage{geometry}
+\usepackage{multicol}
 
+
+\geometry{margin=1in}
 
 \title{Assignment 1}
 \author{}
@@ -18,7 +18,6 @@
 \maketitle
 
 \section*{Problem 1 : Design Combinational Circuit}
-Simplify the following functions using Karnaugh Maps, draw the circuit.
 \subsection*{1. $F(W,X,Y,Z)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$}
 
 \begin{center}
@@ -53,37 +52,89 @@ $\Rightarrow F=WX+X'Z$
 
 \subsection*{3. $F(A,B,C,D)=AC'D'+A'C+ABC+AB'C+A'C'D'$}
 
-\begin{align*}
-    F&=AC'D'+A'C+ABC+AB'C+A'C'D'\\
-    \qquad &=A(C'+D')+A'C+ABC+AB'C+A'C'D'\\
-    \qquad &=A(C'+D')+A'C+ABC+AB'C+A'+C'+D'\\
-    \qquad &=A(C'+D')+ABC+AB'C+A'+C'+D'\\
-    \qquad &=C'+D'+ABC+AB'C+A'+C'+D'\\
-    \qquad &=C'+D'+ABC+AB'C+A'+D'\\
-    \qquad &=C'+D'+ABC+AB'C+A'\\
-    \qquad &=C'+D'+AC(B+B')+A'\\
-    \qquad &=C'+D'+AC1+A'\\
-    \qquad &=C'+D'+AC+A'\\
-    \qquad &=C'+D'+A+A'\\
-    \qquad &=C'+D'+1\\
-    \qquad &=1
-\end{align*}
+\begin{multicols*}{2}
+    \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+        \minterms{0,2,3,4,6,7,8,10,11,12,14,15}
+        \autoterms[0]
+        \implicant{3}{10}
+        \implicantedge{0}{8}{2}{10}
+    \end{karnaugh-map}
+
+    $\Rightarrow F=C+D'$
+
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+        Truth table
+    \end{center}
+    \begin{displaymath}
+        \begin{array}{c c c c|c}
+            A & B & C & D & F \\
+            \hline
+            0 & 0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 1 & 0 \\
+            0 & 0 & 1 & 0 & 1 \\
+            0 & 0 & 1 & 1 & 1 \\
+            0 & 1 & 0 & 0 & 1 \\
+            0 & 1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 0 & 1 \\
+            0 & 1 & 1 & 1 & 1 \\
+            1 & 0 & 0 & 0 & 1 \\
+            1 & 0 & 0 & 1 & 0 \\
+            1 & 0 & 1 & 0 & 1 \\
+            1 & 0 & 1 & 1 & 1 \\
+            1 & 1 & 0 & 0 & 1 \\
+            1 & 1 & 0 & 1 & 0 \\
+            1 & 1 & 1 & 0 & 1 \\
+            1 & 1 & 1 & 1 & 1 \\
+        \end{array}
+    \end{displaymath}
+\end{multicols*}
 
 \subsection*{4. $F(A,B,C,D)=A'B'C'D+CD+AC'D$}
 
-\begin{align*}
-    F&=A'B'C'D+CD+AC'D\\
-    \qquad &=(A'+B'+C')D+CD+AC'D\\
-    \qquad &=(A'+B'+C')D+D(C+AC')\\
-    \qquad &=DA'+DB'+DC'+D(A+C)\\
-    \qquad &=DA'+DB'+DC'+DA+DC\\
-    \qquad &=D(A+A')+DB'+DC'+DC\\
-    \qquad &=D1+DB'+DC'+DC\\
-    \qquad &=D+DB'+DC'+DC\\
-    \qquad &=D+DC'+DC\\
-    \qquad &=D+DC\\
-    \qquad &=D\\
-\end{align*}
+\begin{multicols*}{2}
+    \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+        \minterms{1,3,7,9,11,13,15}
+        \autoterms[0]
+        \implicant{3}{11}
+        \implicant{13}{11}
+        \implicantedge{1}{3}{9}{11}
+    \end{karnaugh-map}
+
+    $\Rightarrow F=AD+B'D+CD$
+
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+        Truth table
+    \end{center}
+    \begin{displaymath}
+        \begin{array}{c c c c|c}
+            A & B & C & D & F \\
+            \hline
+            0 & 0 & 0 & 0 & 0 \\
+            0 & 0 & 0 & 1 & 1 \\
+            0 & 0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 1 & 1 \\
+            0 & 1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 1 & 1 \\
+            1 & 0 & 0 & 0 & 0 \\
+            1 & 0 & 0 & 1 & 1 \\
+            1 & 0 & 1 & 0 & 0 \\
+            1 & 0 & 1 & 1 & 1 \\
+            1 & 1 & 0 & 0 & 0 \\
+            1 & 1 & 0 & 1 & 1 \\
+            1 & 1 & 1 & 0 & 0 \\
+            1 & 1 & 1 & 1 & 1 \\
+        \end{array}
+    \end{displaymath}
+\end{multicols*}
+
 
 \section*{Promblem 2 : Design Sequential Circuit}
 
