@@ -1,11 +1,12 @@
 \documentclass[12pt]{article}
 \usepackage{graphicx}
 \usepackage{multirow}
-\usepackage{karnaugh-map}
+\usepackage[label=corner]{karnaugh-map}
 \usepackage{mathtools}
 \usepackage{circuitikz}
 \usepackage{geometry}
 \usepackage{multicol}
+\usepackage{tikz}
 
 
 \geometry{margin=1in}
@@ -92,6 +93,8 @@ $\Rightarrow F=WX+X'Z$
     \end{displaymath}
 \end{multicols*}
 
+\pagebreak
+
 \subsection*{4. $F(A,B,C,D)=A'B'C'D+CD+AC'D$}
 
 \begin{multicols*}{2}
@@ -135,6 +138,7 @@ $\Rightarrow F=WX+X'Z$
     \end{displaymath}
 \end{multicols*}
 
+\pagebreak
 
 \section*{Promblem 2 : Design Sequential Circuit}
 
@@ -151,7 +155,5 @@ $\Rightarrow F=WX+X'Z$
         F                                  & \multicolumn{1}{c|}{D  }             & E                           & 0 \\ \hline
     \end{tabular}
 \end{center}
-
-For the given state table, design the circuit for FSM using JK Flip-Flop.
 
 \end{document}
