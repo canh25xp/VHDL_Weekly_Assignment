@@ -1,19 +1,138 @@
 \documentclass{vhdl-assignment}
 
-\title{Assignment 2}
+\title{Assignment 2 Solution}
+\date{1 Oct 2023}
 
 \begin{document}
 \maketitle
 
 \section*{Problem 1}
-$F(A,B,C,D)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$
-\begin{enumerate}
-    \item Simplify F using Karnaugh Maps.
-    \item Construct truth table.
-    \item Draw the circuit.
-    \item Design a \emph{Structural module} for this circuit (Using Verilog)
-\end{enumerate}
 
+$F(A,B,C,D)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$
+
+\begin{figure}[H]
+    \centering
+    % \begin{karnaugh-map}[4][4][1][$Z$][$Y$][$X$][$W$]
+    %     \manualterms{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+    % \end{karnaugh-map}
+    \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+        \minterms{0,2,3,8,9,10,11,12,13,14,15}
+        \autoterms[0]
+        \implicant{12}{10}
+        \implicantcorner
+        \implicantedge{3}{2}{11}{10}
+    \end{karnaugh-map}
+    \caption{Karnaugh map}
+\end{figure}
+
+$\Rightarrow F=A+B'D'+B'C$
+
+\begin{table}[H]
+    \centering
+    \begin{displaymath}
+        \begin{array}{c c c c|c}
+            A & B & C & D & F \\
+            \hline
+            0 & 0 & 0 & 0 & 1 \\
+            0 & 0 & 0 & 1 & 0 \\
+            0 & 0 & 1 & 0 & 1 \\
+            0 & 0 & 1 & 1 & 1 \\
+            0 & 1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 1 & 0 \\
+            0 & 1 & 1 & 0 & 0 \\
+            0 & 1 & 1 & 1 & 0 \\
+            1 & 0 & 0 & 0 & 1 \\
+            1 & 0 & 0 & 1 & 1 \\
+            1 & 0 & 1 & 0 & 1 \\
+            1 & 0 & 1 & 1 & 1 \\
+            1 & 1 & 0 & 0 & 1 \\
+            1 & 1 & 0 & 1 & 1 \\
+            1 & 1 & 1 & 0 & 1 \\
+            1 & 1 & 1 & 1 & 1 \\
+        \end{array}
+    \end{displaymath}
+    \caption[short]{Truth Table}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}
+        \node (A) at (0,0) {$A$};
+        \node (B) at (1,0) {$B$};
+        \node (C) at (2,0) {$C$};
+        \node (D) at (3,0) {$D$};
+
+        \node[not port]                 (Not0)  at ($(D)    + (2, -2)$) {};
+        \node[not port]                 (Not1)  at ($(D)    + (2, -5)$) {};
+        \node[not port]                 (Not2)  at ($(D)    + (2, -7)$) {};
+        \node[and port]                 (And0)  at ($(Not0) + (3, -1)$) {};
+        \node[and port]                 (And1)  at ($(And0) + (0, -3)$) {};
+        \node[or port, number inputs=3] (Or1)   at ($(And0) + (3, -1)$) {};
+
+        \draw (A) |- ($(A)+(0,-8)$); 
+        \draw (B) |- ($(B)+(0,-8)$);
+        \draw (C) |- ($(C)+(0,-8)$);
+        \draw (D) |- ($(D)+(0,-8)$);
+
+        \filldraw[black] ($(A)+(0,-1)$) circle (2pt) node[]{};
+        \draw ($(A)+(0,-1)$) |- ($(A)+(9,-1)$) |- (Or1.in 1);
+
+        \filldraw[black] ($(B)+(0,-2)$) circle (2pt) node[]{};
+        \draw ($(B)+(0,-2)$) |- (Not0.in);
+
+        \filldraw[black] ($(B)+(0,-5)$) circle (2pt) node[]{};
+        \draw ($(B)+(0,-5)$) |- (Not1.in);
+
+        \filldraw[black] ($(D)+(0,-7)$) circle (2pt) node[]{};
+        \draw ($(D)+(0,-7)$) |- (Not2.in);
+
+        \filldraw[black] ($(C)+(0,-3)$) circle (2pt) node[]{};
+        \draw ($(C)+(0,-3)$) |- ($(C)+(3,-3)$) |- (And0.in 2);
+
+        \draw (Not0.out) |- (And0.in 1);
+        \draw (Not1.out) |- (And1.in 1);
+        \draw (Not2.out) |- (And1.in 2);
+        \draw (And0.out) |- (Or1.in 2);
+        \draw (And1.out) |- (Or1.in 3);
+
+        \node[right] (F) at (Or1.out) {$F$};
+    \end{circuitikz}
+    \caption{Circuit}
+\end{figure}
+
+\begin{lstlisting}
+import numpy as np
+    
+def incmatrix(genl1,genl2):
+    m = len(genl1)
+    n = len(genl2)
+    M = None #to become the incidence matrix
+    VT = np.zeros((n*m,1), int)  #dummy variable
+    
+    #compute the bitwise xor matrix
+    M1 = bitxormatrix(genl1)
+    M2 = np.triu(bitxormatrix(genl2),1) 
+
+    for i in range(m-1):
+        for j in range(i+1, m):
+            [r,c] = np.where(M2 == M1[i,j])
+            for k in range(len(r)):
+                VT[(i)*n + r[k]] = 1;
+                VT[(i)*n + c[k]] = 1;
+                VT[(j)*n + r[k]] = 1;
+                VT[(j)*n + c[k]] = 1;
+                
+                if M is None:
+                    M = np.copy(VT)
+                else:
+                    M = np.concatenate((M, VT), 1)
+                
+                VT = np.zeros((n*m,1), int)
+    
+    return M
+\end{lstlisting}
+
+\pagebreak
 \section*{Promblem 2 : Design a 4-to-1 Multiplexer }
 
 \begin{enumerate}

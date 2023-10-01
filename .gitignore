@@ -1,6 +1,8 @@
-.vscode/
+.vscode
+.tmp
 *.aux
 *.fdb_latexmk
 *.fls
 *.log
 *.synctex.gz
+*.bak

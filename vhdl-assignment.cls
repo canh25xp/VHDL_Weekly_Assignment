@@ -3,6 +3,7 @@
 
 \LoadClass[12pt, a4paper]{article}
 
+% Packages
 \RequirePackage{graphicx}
 \RequirePackage[label=corner]{karnaugh-map}
 \RequirePackage{mathtools}
@@ -10,9 +11,11 @@
 \RequirePackage{geometry}
 \RequirePackage{multicol}
 \RequirePackage{multirow}
-\RequirePackage{tikz}
+\RequirePackage{float}
+\RequirePackage{listings}
 
+
+%Settings
 \geometry{margin=1in}
 
-\author{}
-\date{}
+\author{Ngo Van Canh}
