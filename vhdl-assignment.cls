@@ -13,9 +13,9 @@
 \RequirePackage{multirow}
 \RequirePackage{float}
 \RequirePackage{listings}
-
+\RequirePackage{subcaption}
 
 %Settings
-\geometry{margin=1in}
+\geometry{margin=2cm}
 
 \author{Ngo Van Canh}
