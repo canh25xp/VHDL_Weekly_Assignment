@@ -1,46 +1,47 @@
 \documentclass{vhdl-assignment}
 
 \title{Assignment 1}
+\date{September 18, 2023}
 
 \begin{document}
 \maketitle
 
-\section*{Problem 1 : Design Combinational Circuit}
-Simplify the following functions using Karnaugh Maps, draw the circuit.
+\begin{problem}{Design Combinational Circuit}
+    Simplify the following functions using Karnaugh Maps, draw the circuit.
+    \begin{enumerate}
+        \item$F(W,X,Y,Z)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$
+        \item$F(W,X,Y,Z)=\sum m(3,9,11,12,13,14,15) + \sum d(1,4,6)$
+        \item$F(A,B,C,D)=AC'D'+A'C+ABC+AB'C+A'C'D'$
+        \item$F(A,B,C,D)=A'B'C'D+CD+AC'D$
+    \end{enumerate}
+\end{problem}
 
-\begin{enumerate}
-    \item$F(W,X,Y,Z)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$
-    \item$F(W,X,Y,Z)=\sum m(3,9,11,12,13,14,15) + \sum d(1,4,6)$
-    \item$F(A,B,C,D)=AC'D'+A'C+ABC+AB'C+A'C'D'$
-    \item$F(A,B,C,D)=A'B'C'D+CD+AC'D$
-\end{enumerate}
+\begin{problem}{Design Sequential Circuit}
+    \begin{center}
+        \begin{tabular}{|c|cc|c|}
+            \hline
+            \multirow{2}{*}{Current State (S)} & \multicolumn{2}{c|}{Next State (S')} & \multirow{2}{*}{Output (Z)}     \\ \cline{2-3}
+                                               & \multicolumn{1}{c|}{X=0}             & X=1                         &   \\ \hline
+            A                                  & \multicolumn{1}{c|}{F  }             & B                           & 0 \\ \hline
+            B                                  & \multicolumn{1}{c|}{A  }             & F                           & 1 \\ \hline
+            C                                  & \multicolumn{1}{c|}{A  }             & D                           & 1 \\ \hline
+            D                                  & \multicolumn{1}{c|}{F  }             & E                           & 0 \\ \hline
+            E                                  & \multicolumn{1}{c|}{D  }             & B                           & 1 \\ \hline
+            F                                  & \multicolumn{1}{c|}{D  }             & E                           & 0 \\ \hline
+        \end{tabular}
+    \end{center}
+    
+    For the given state table, design the circuit for FSM using JK Flip-Flop.
+\end{problem}
 
-\section*{Promblem 2 : Design Sequential Circuit}
-
-\begin{center}
-    \begin{tabular}{|c|cc|c|}
-        \hline
-        \multirow{2}{*}{Current State (S)} & \multicolumn{2}{c|}{Next State (S')} & \multirow{2}{*}{Output (Z)}     \\ \cline{2-3}
-                                           & \multicolumn{1}{c|}{X=0}             & X=1                         &   \\ \hline
-        A                                  & \multicolumn{1}{c|}{F  }             & B                           & 0 \\ \hline
-        B                                  & \multicolumn{1}{c|}{A  }             & F                           & 1 \\ \hline
-        C                                  & \multicolumn{1}{c|}{A  }             & D                           & 1 \\ \hline
-        D                                  & \multicolumn{1}{c|}{F  }             & E                           & 0 \\ \hline
-        E                                  & \multicolumn{1}{c|}{D  }             & B                           & 1 \\ \hline
-        F                                  & \multicolumn{1}{c|}{D  }             & E                           & 0 \\ \hline
-    \end{tabular}
-\end{center}
-
-For the given state table, design the circuit for FSM using JK Flip-Flop.
-
-\section*{Promblem 3 : ModelSim}
-
-\begin{enumerate}
-    \item Install ModelSim
-    \item Read ModelSim Tutorial book: \\
-    \emph{Chapter 1: Introduction, Chapter 2: Conceptual Overview}
-    \item Step by step do: \\
-    \emph{Chapter 3: Basic Simulation, Chapter 4: Projects in ModelSim Tutorial book}
-\end{enumerate}
+\begin{problem}{ModelSim}
+    \begin{enumerate}
+        \item Install ModelSim
+        \item Read ModelSim Tutorial book: \\
+        \emph{Chapter 1: Introduction, Chapter 2: Conceptual Overview}
+        \item Step by step do: \\
+        \emph{Chapter 3: Basic Simulation, Chapter 4: Projects in ModelSim Tutorial book}
+    \end{enumerate}
+\end{problem}
 
 \end{document}

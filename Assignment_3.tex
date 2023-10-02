@@ -1,0 +1,83 @@
+\documentclass{vhdl-assignment}
+\usetikzlibrary{circuits.logic.IEC,calc}
+
+\title{Assignment 3 : Structural Model}
+\date{\today}
+
+% ==========================================Begin==========================================
+
+\begin{document}
+\maketitle
+
+\begin{problem}{Write testbench for all problems in Assignment 2}
+    \begin{enumerate}
+        \item Problem 1
+        \item 4-to-1 Multiplexer
+        \item Half Adder
+        \item Full Adder
+        \item 4-bit Ripple Carry Full Adder
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}{8-to-3 Encoder and 3-to-8 Decoder}
+    % Design a 3-to-8 decoder, using a Verilog RTL description. A 3-bit input a[2:0]
+    % is provided to the decoder. The output of the decoder is out[7:0]. The output bit
+    % indexed by a[2:0] gets the value 1, the other bits are 0. Synthesize the decoder,
+    % using any technology library available to you. Optimize for smallest area.
+    % Apply identical stimulus to the RTL and the gate-level netlist and compare the
+    % outputs.
+    \begin{enumerate}
+        \item Construct truth table.
+        \item Determine output function.
+        \item Write Verilog code and testbench for that circuit.
+    \end{enumerate}
+
+    % \begin{figure}[H]
+    %     \begin{subfigure}{0.5\textwidth}
+    %         \centering
+    %         \begin{circuitikz}[circuit logic IEC]
+
+    %             \draw[step=1cm,gray,very thin] (-2,-2) grid (6,4);%just to help place nodes
+                
+    %             \node[and gate,inputs={nnn},and gate IEC symbol={Decoder 3:8},text height=6cm,text width=4cm,
+    %              ] (A) {};
+                
+    %             \foreach \V/\X in {1/A,2/B,3/C} 
+    %             {
+    %               \draw  ([xshift=-10pt]A.input \V) node[left] {$\X$} -- (A.input  \V);
+    %             }
+                
+    %             \foreach \C/\B in {0.111/000,.222/001,.333/010,.444/011,.555/100,.666/101,.777/110,.888/111} 
+    %             {
+    %               \draw ( $ (A.south east)!\C!(A.north east) $ ) -- ++(10pt,0) node[left,xshift=-10] {$\B$};  
+    %             }
+                
+    %             %extra code as requested to show how to connect the decoder outputs
+    %             %to the inputs of or gates.
+    %             \draw (5,2.05) node[or port] (myor) {};
+                
+    %             \draw ( $ (A.south east)!.888!(A.north east) $ ) -| (myor.in 1) {};
+    %             \draw ( $ (A.south east)!.777!(A.north east) $ ) -| (myor.in 2) {};
+    %             \end{circuitikz}
+    %         \caption{3-to-8 Decoder}
+    %     \end{subfigure}
+    %     \begin{subfigure}{0.4\textwidth}
+    %         \centering
+
+    %         \caption{8-to-3 Encoder}
+    %     \end{subfigure}
+    %     \caption{Encoder and Decoder}
+    % \end{figure}
+\end{problem}
+
+\begin{problem}{Flip Flops : T-FF, D-FF, JK-FF, SR-FF}
+    \begin{enumerate}
+        \item Construct truth table.
+        \item Determine output function.
+        \item Write Verilog code and testbench for that circuit.
+    \end{enumerate}
+\end{problem}
+
+\textit{Note : Using structural model. Flip flops include reset signal.}
+
+\end{document}
