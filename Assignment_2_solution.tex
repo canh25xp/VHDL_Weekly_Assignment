@@ -1,4 +1,5 @@
 \documentclass{vhdl-assignment}
+\usepackage{blindtext}
 
 \title{Assignment 2 Solution}
 \date{1 Oct 2023}
@@ -10,49 +11,56 @@
 
 $F(A,B,C,D)=\sum m(0,2,3,8,9,10,11,12,13,14,15)$
 
-\begin{figure}[H]
-    \centering
-    % \begin{karnaugh-map}[4][4][1][$Z$][$Y$][$X$][$W$]
-    %     \manualterms{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
-    % \end{karnaugh-map}
-    \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
-        \minterms{0,2,3,8,9,10,11,12,13,14,15}
-        \autoterms[0]
-        \implicant{12}{10}
-        \implicantcorner
-        \implicantedge{3}{2}{11}{10}
-    \end{karnaugh-map}
-    \caption{Karnaugh map}
-\end{figure}
-
-$\Rightarrow F=A+B'D'+B'C$
-
 \begin{table}[H]
     \centering
     \begin{displaymath}
-        \begin{array}{c c c c|c}
-            A & B & C & D & F \\
+        \begin{array}{c|c c c c|c}
+              & A & B & C & D & F \\
             \hline
-            0 & 0 & 0 & 0 & 1 \\
-            0 & 0 & 0 & 1 & 0 \\
-            0 & 0 & 1 & 0 & 1 \\
-            0 & 0 & 1 & 1 & 1 \\
-            0 & 1 & 0 & 0 & 0 \\
-            0 & 1 & 0 & 1 & 0 \\
-            0 & 1 & 1 & 0 & 0 \\
-            0 & 1 & 1 & 1 & 0 \\
-            1 & 0 & 0 & 0 & 1 \\
-            1 & 0 & 0 & 1 & 1 \\
-            1 & 0 & 1 & 0 & 1 \\
-            1 & 0 & 1 & 1 & 1 \\
-            1 & 1 & 0 & 0 & 1 \\
-            1 & 1 & 0 & 1 & 1 \\
-            1 & 1 & 1 & 0 & 1 \\
-            1 & 1 & 1 & 1 & 1 \\
+            0  & 0 & 0 & 0 & 0 & 1 \\
+            1  & 0 & 0 & 0 & 1 & 0 \\
+            2  & 0 & 0 & 1 & 0 & 1 \\
+            3  & 0 & 0 & 1 & 1 & 1 \\
+            4  & 0 & 1 & 0 & 0 & 0 \\
+            5  & 0 & 1 & 0 & 1 & 0 \\
+            6  & 0 & 1 & 1 & 0 & 0 \\
+            7  & 0 & 1 & 1 & 1 & 0 \\
+            8  & 1 & 0 & 0 & 0 & 1 \\
+            9  & 1 & 0 & 0 & 1 & 1 \\
+            10 & 1 & 0 & 1 & 0 & 1 \\
+            11 & 1 & 0 & 1 & 1 & 1 \\
+            12 & 1 & 1 & 0 & 0 & 1 \\
+            13 & 1 & 1 & 0 & 1 & 1 \\
+            14 & 1 & 1 & 1 & 0 & 1 \\
+            15 & 1 & 1 & 1 & 1 & 1 \\
         \end{array}
     \end{displaymath}
     \caption[short]{Truth Table}
 \end{table}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+            \manualterms{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}
+        \end{karnaugh-map}
+        \caption{Layout}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \begin{karnaugh-map}[4][4][1][$D$][$C$][$B$][$A$]
+            \minterms{0,2,3,8,9,10,11,12,13,14,15}
+            \autoterms[0]
+            \implicant{12}{10}
+            \implicantcorner
+            \implicantedge{3}{2}{11}{10}
+        \end{karnaugh-map}
+        \caption{Prime implicant}
+    \end{subfigure}
+    \caption{Karnaugh-map}
+\end{figure}
+
+$\Rightarrow F=A+B'D'+B'C$
 
 \begin{figure}[H]
     \centering
@@ -63,94 +71,299 @@ $\Rightarrow F=A+B'D'+B'C$
         \node (D) at (3,0) {$D$};
 
         \node[not port]                 (Not0)  at ($(D)    + (2, -2)$) {};
-        \node[not port]                 (Not1)  at ($(D)    + (2, -5)$) {};
-        \node[not port]                 (Not2)  at ($(D)    + (2, -7)$) {};
-        \node[and port]                 (And0)  at ($(Not0) + (3, -1)$) {};
+        \node[not port]                 (Not1)  at ($(D)    + (2, -4)$) {};
+        \node[not port]                 (Not2)  at ($(D)    + (2, -6)$) {};
+        \node[and port, anchor=in 1]    (And0)  at ($(Not0) + (2, 0)$) {};
         \node[and port]                 (And1)  at ($(And0) + (0, -3)$) {};
-        \node[or port, number inputs=3] (Or1)   at ($(And0) + (3, -1)$) {};
+        \node[or port, number inputs=3] (0r0)   at ($(And0) + (3, -1)$) {};
 
-        \draw (A) |- ($(A)+(0,-8)$); 
-        \draw (B) |- ($(B)+(0,-8)$);
-        \draw (C) |- ($(C)+(0,-8)$);
-        \draw (D) |- ($(D)+(0,-8)$);
+        \draw (A) -- ($(A)+(0,-7)$); 
+        \draw (B) -- ($(B)+(0,-7)$);
+        \draw (C) -- ($(C)+(0,-7)$);
+        \draw (D) -- ($(D)+(0,-7)$);
 
         \filldraw[black] ($(A)+(0,-1)$) circle (2pt) node[]{};
-        \draw ($(A)+(0,-1)$) |- ($(A)+(9,-1)$) |- (Or1.in 1);
+        \draw ($(A)+(0,-1)$) |- ($(A)+(9.5,-1)$) |- (0r0.in 1);
 
         \filldraw[black] ($(B)+(0,-2)$) circle (2pt) node[]{};
         \draw ($(B)+(0,-2)$) |- (Not0.in);
 
-        \filldraw[black] ($(B)+(0,-5)$) circle (2pt) node[]{};
-        \draw ($(B)+(0,-5)$) |- (Not1.in);
+        \filldraw[black] ($(B)+(0,-4)$) circle (2pt) node[]{};
+        \draw ($(B)+(0,-4)$) |- (Not1.in);
 
-        \filldraw[black] ($(D)+(0,-7)$) circle (2pt) node[]{};
-        \draw ($(D)+(0,-7)$) |- (Not2.in);
+        \filldraw[black] ($(D)+(0,-6)$) circle (2pt) node[]{};
+        \draw ($(D)+(0,-6)$) |- (Not2.in);
 
         \filldraw[black] ($(C)+(0,-3)$) circle (2pt) node[]{};
-        \draw ($(C)+(0,-3)$) |- ($(C)+(3,-3)$) |- (And0.in 2);
+        \draw ($(C)+(0,-3)$) |- ($(C)+(4,-3)$) |- (And0.in 2);
 
         \draw (Not0.out) |- (And0.in 1);
         \draw (Not1.out) |- (And1.in 1);
         \draw (Not2.out) |- (And1.in 2);
-        \draw (And0.out) |- (Or1.in 2);
-        \draw (And1.out) |- (Or1.in 3);
+        \draw (And0.out) |- (0r0.in 2);
+        \draw (And1.out) |- (0r0.in 3);
 
-        \node[right] (F) at (Or1.out) {$F$};
+        \node[right] (F) at (0r0.out) {$F$};
     \end{circuitikz}
     \caption{Circuit}
 \end{figure}
 
-\begin{lstlisting}
-import numpy as np
+\noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[language=Verilog,caption=Verilog code for Problem 1, numbers=left, frame=lines, captionpos=b]{src/Assignment_1_Problem_1.v}
+\end{minipage}
+
+% =======================================================
+\newpage
+\begin{multicols}{2}
+    [
+        \section*{Promblem 2 : Design a 4-to-1 Multiplexer}
+    ]
+    \begin{table}[H]
+        \begin{displaymath}
+            \begin{array}{c c | c}
+                s0 & s1 & F \\
+                \hline
+                0  & 0  & i0 \\
+                0  & 1  & i1 \\
+                1  & 0  & i2 \\
+                1  & 1  & i3 \\
+            \end{array}
+        \end{displaymath}
+        \centering
+        \caption[short]{Truth Table for a 4-to-1 Multiplexer}
+    \end{table}
+    $\Rightarrow F=s0's1'i0 + s0s1'i1 + s0's1i2 + s0s1i3$
     
-def incmatrix(genl1,genl2):
-    m = len(genl1)
-    n = len(genl2)
-    M = None #to become the incidence matrix
-    VT = np.zeros((n*m,1), int)  #dummy variable
-    
-    #compute the bitwise xor matrix
-    M1 = bitxormatrix(genl1)
-    M2 = np.triu(bitxormatrix(genl2),1) 
+    \begin{figure}[H]
+        \begin{circuitikz}
+            \tikzset{mux_4_to_1/.style={muxdemux, muxdemux def={NL=4, NB=2, NR=1}}}
+            \node[mux_4_to_1] (Mux0) {MUX};
+            \node[right] (F) at (Mux0.rpin 1){$F$};
+            \node[left] (i0) at (Mux0.lpin 1){$i0$};
+            \node[left] (i1) at (Mux0.lpin 2){$i1$};
+            \node[left] (i2) at (Mux0.lpin 3){$i2$};
+            \node[left] (i3) at (Mux0.lpin 4){$i3$};
+            \node[below] (s0) at (Mux0.bpin 1){$s0$};
+            \node[below] (s1) at (Mux0.bpin 2){$s1$};
+        \end{circuitikz}
+        \centering
+        \caption{4-to-1 Multiplexer}
+    \end{figure}
+\end{multicols}
 
-    for i in range(m-1):
-        for j in range(i+1, m):
-            [r,c] = np.where(M2 == M1[i,j])
-            for k in range(len(r)):
-                VT[(i)*n + r[k]] = 1;
-                VT[(i)*n + c[k]] = 1;
-                VT[(j)*n + r[k]] = 1;
-                VT[(j)*n + c[k]] = 1;
-                
-                if M is None:
-                    M = np.copy(VT)
-                else:
-                    M = np.concatenate((M, VT), 1)
-                
-                VT = np.zeros((n*m,1), int)
-    
-    return M
-\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}
+        \node (i0) at (0,6) {$i0$};
+        \node (i1) at (0,4) {$i1$};
+        \node (i2) at (0,2) {$i2$};
+        \node (i3) at (0,0) {$i3$};
 
-\pagebreak
-\section*{Promblem 2 : Design a 4-to-1 Multiplexer }
+        \node (s1) at (0,-4) {$s1$};
+        \node (s0) at (0,-5) {$s0$};
 
-\begin{enumerate}
-    \item Construct truth table.
-    \item Determine output function.
-    \item Draw the circuit.
-    \item Design a \emph{Structural module} for this circuit (Using Verilog)
-\end{enumerate}
+        \node[and port, number inputs=3, anchor=in 1]   (And0)   at ($(i0) + (6, 0)$) {};
+        \node[and port, number inputs=3, anchor=in 1]   (And1)   at ($(i1) + (6, 0)$) {};
+        \node[and port, number inputs=3, anchor=in 1]   (And2)   at ($(i2) + (6, 0)$) {};
+        \node[and port, number inputs=3, anchor=in 1]   (And3)   at ($(i3) + (6, 0)$) {};
 
+        \node[not port, rotate=90] (Not1) at ($(s1) + (2,2)$) {};
+        \node[not port, rotate=90] (Not0) at ($(s0) + (4,3)$) {};
+
+        \node[or port, number inputs=4, anchor=in 1]    (Or0)    at ($(And0.out) + (2, 0)$) {};
+
+        \draw (i0) -- (And0.in 1);
+        \draw (i1) -- (And1.in 1);
+        \draw (i2) -- (And2.in 1);
+        \draw (i3) -- (And3.in 1);
+
+        \draw (s1) -- ($(s1) + (2,0)$) -- (Not1.in);
+        \draw (s0) -- ($(s0) + (4,0)$) -- (Not0.in);
+
+        \draw (And0.out) -- (Or0.in 1);
+        \draw (And1.out) |- (Or0.in 2);
+        \draw (And2.out) |- ($(And2.out)+(0.5,0)$) |- (Or0.in 3);
+        \draw (And3.out) |- ($(And3.out)+(1,0)$)   |- (Or0.in 4);
+
+        \draw (Not0.out) |- (And0.in 3);
+        \draw (Not0.out) |- (And2.in 3);
+        \draw (Not1.out) |- (And0.in 2);
+        \draw (Not1.out) |- (And1.in 2);
+
+        \draw ($(s1)+(1,0)$) |- (And2.in 2);
+        \draw ($(s0)+(3,0)$) |- (And1.in 3);
+        \draw ($(And3.in 2)+(-5,0)$) |- (And3.in 2);
+        \draw ($(And3.in 3)+(-3,0)$) |- (And3.in 3);
+        
+        \filldraw[black] ($(And1.in 2)+(-4,0)$) circle (2pt) node[]{};
+        \filldraw[black] ($(And2.in 3)+(-2,0)$) circle (2pt) node[]{};
+        \filldraw[black] ($(And3.in 2)+(-5,0)$) circle (2pt) node[]{};
+        \filldraw[black] ($(And3.in 3)+(-3,0)$) circle (2pt) node[]{};
+
+        \filldraw[black] ($(s1)+(1,0)$) circle (2pt) node[]{};
+        \filldraw[black] ($(s0)+(3,0)$) circle (2pt) node[]{};
+
+        \node[right] (F) at (Or0.out) {$F$};
+    \end{circuitikz}
+    \caption{4-to-1 Multiplexer Circuit}
+\end{figure}
+
+\noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[language=Verilog,caption=Verilog code for 4-to-1 Multiplexer, numbers=left, frame=lines, captionpos=b]{src/Assignment_1_Problem_2.v}
+\end{minipage}
+
+% =======================================================
+\newpage
 \section*{Promblem 3 : Adder Circuit}
 
-For each of the following circuit, Construct truth table, Determine the output function and Write Verilog code 
+\subsection*{1.Half Adder}
 
-\begin{enumerate}
-    \item Half Adder
-    \item Full Adder
-    \item Ripple Carry 4-bit Adder
-    \item Ripple Carry 16-bit Adder
-\end{enumerate}
+\begin{table}[H]
+    \begin{displaymath}
+        \begin{array}{c c | c c}
+            X & Y & S & C\\
+            \hline
+            0  & 0  & 0 & 0 \\
+            0  & 1  & 1 & 0 \\
+            1  & 0  & 1 & 0 \\
+            1  & 1  & 0 & 1 \\
+        \end{array}
+    \end{displaymath}
+    \centering
+    \caption[short]{Truth Table for Half Adder}
+\end{table}
+
+\begin{equation*}
+    \Rightarrow
+    \begin{cases}
+        S = X'Y + XY' = X \oplus Y\\
+        C = XY\\
+    \end{cases}
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}
+        \node (X) at (0,2) {$X$};
+        \node (Y) at (0,0) {$Y$};
+
+        \node[xor port, anchor=in 1] (Xor) at ($(X)+(3,0)$) {};
+        \node[and port, anchor=in 1] (And) at ($(Y)+(3,0)$) {};
+
+        \draw (X) -- (Xor.in 1);
+        \draw (Y) -- (And.in 1);
+
+        \draw ($(X) + (1,0)$) |- (And.in 2);
+        \draw ($(Y) + (2,0)$) |- (Xor.in 2);
+
+        \filldraw[black] ($(X) + (1,0)$) circle (2pt);
+        \filldraw[black] ($(Y) + (2,0)$) circle (2pt);
+
+        \node[right] (S) at (Xor.out) {$S$};
+        \node[right] (C) at (And.out) {$C$};
+    \end{circuitikz}
+    \caption{Half Adder Circuit}
+\end{figure}
+
+\noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[language=Verilog,caption=Verilog code for Half Adder, numbers=left, frame=lines, captionpos=b]{src/Assignment_1_Problem_3_Half_Adder.v}
+\end{minipage}
+
+\newpage
+\subsection*{2.Full Adder}
+
+\begin{table}[H]
+    \begin{displaymath}
+        \begin{array}{c c c | c c}
+            X & Y & Ci & S & Co\\
+            \hline
+            0  & 0  & 0 & 0 & 0 \\
+            0  & 0  & 1 & 1 & 0 \\
+            0  & 1  & 0 & 1 & 0 \\
+            0  & 1  & 1 & 0 & 1 \\
+            1  & 0  & 0 & 1 & 0 \\
+            1  & 0  & 1 & 0 & 1 \\
+            1  & 1  & 0 & 0 & 1 \\
+            1  & 1  & 1 & 1 & 1 \\
+        \end{array}
+    \end{displaymath}
+    \centering
+    \caption[short]{Truth Table for Full Adder}
+\end{table}
+
+\begin{figure}[H]
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \begin{karnaugh-map}[4][2][1][$X$][$Y$][$Ci$]
+            \minterms{1,2,4,7}
+            \autoterms[0]
+        \end{karnaugh-map}
+        \caption{$S = Ci \oplus X \oplus Y $}
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
+        \centering
+        \begin{karnaugh-map}[4][2][1][$X$][$Y$][$Ci$]
+            \minterms{3,5,6,7}
+            \autoterms[0]
+            \implicant{7}{6}
+            \implicant{3}{7}
+            \implicant{5}{7}
+        \end{karnaugh-map}
+        \caption{$Co = XY + YCi + XCi$}
+    \end{subfigure}
+    \caption{Karnaugh-map Full Adder}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{circuitikz}
+        \node (X) at (0,2) {$X$};
+        \node (Y) at (0,0) {$Y$};
+        
+        \node[xor port, anchor=in 1] (Xor0) at ($(X)+(2,0)$) {};
+        \node[xor port, anchor=in 1] (Xor1) at ($(Xor0.out)+(2,0)$) {};
+        \node[and port, anchor=in 1] (And0) at ($(Y)+(2,0)$) {};
+        \node[and port, anchor=in 1] (And1) at ($(And0.out)+(2,0)$) {};
+        \node[xor port, anchor=in 1] (Xor2) at ($(And1)+(3,0)$) {};
+        
+        \node (Ci) at ($(And1.in 2) + (-7,-1)$) {$Ci$};
+
+        \draw (X) -- (Xor0.in 1);
+        \draw (Y) -- (And0.in 1);
+        \draw (Xor0.out) -- (Xor1.in 1);
+
+        \draw ($(X) + (1,0)$) |- (And0.in 2);
+        \draw ($(Y) + (2,0)$) |- (Xor0.in 2);
+        \draw ($(Xor1.in 1) + (-0.5,0)$) |- (And1.in 1);
+        \draw ($(And1.in 2) + (-1,0)$) -- (And1.in 2);
+        \draw ($(And1.in 2) + (-1,0)$) |- (Xor1.in 2);
+        \draw (Ci) -- ($(And1.in 2) + (-1,-1)$) |- ($(And1.in 2) + (-1,0)$);
+        \draw (And1.out) -- (Xor2.in 1);
+        \draw (And0.out) |- ($(And0.out) + (4,-2)$) |- (Xor2.in 2) ;
+
+        \filldraw[black] ($(X) + (1,0)$) circle (2pt);
+        \filldraw[black] ($(Y) + (2,0)$) circle (2pt);
+        \filldraw[black] ($(Xor1.in 1) + (-0.5,0)$) circle (2pt);
+        \filldraw[black] ($(And1.in 2) + (-1,0)$) circle (2pt);
+
+        \node[right] (S) at (Xor1.out) {$S$};
+        \node[right] (C) at (Xor2.out) {$Co$};
+    \end{circuitikz}
+    \caption{Full Adder Circuit}
+\end{figure}
+
+\noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[language=Verilog,caption=Verilog code for Full Adder, numbers=left, frame=lines, captionpos=b]{src/Assignment_1_Problem_3_Full_Adder.v}
+\end{minipage}
+
+\newpage
+\subsection*{3.Ripple Carry 4-bit Adder}
+\noindent\begin{minipage}{\linewidth}
+    \lstinputlisting[language=Verilog,caption=Verilog code for Ripple Carry Adder, numbers=left, frame=lines, captionpos=b]{src/Assignment_1_Problem_3_Ripple_Carry_Adder.v}
+\end{minipage}
+
+\newpage
+\subsection*{4.Ripple Carry 6-bit Adder}
+\blindtext[3]
 
 \end{document}

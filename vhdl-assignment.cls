@@ -19,3 +19,5 @@
 \geometry{margin=2cm}
 
 \author{Ngo Van Canh}
+
+\ctikzset{logic ports=ieee}
