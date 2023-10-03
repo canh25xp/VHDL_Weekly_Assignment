@@ -22,22 +22,9 @@
 
 \author{Ngo Van Canh}
 
-% =============Create Problem Sections=============
-\newcommand{\enterProblemHeader}[1]{
-    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-}
-
-\newcommand{\exitProblemHeader}[1]{
-    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
-    \stepcounter{#1}
-    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
-}
-
 \setcounter{secnumdepth}{0}
 \newcounter{ProblemCounter}
 \setcounter{ProblemCounter}{1}
-\nobreak\extramarks{Problem \arabic{ProblemCounter}}{}\nobreak{}
 
 % =============Problem Environment=============
 \newenvironment{problem}[2][-1]{
@@ -45,8 +32,4 @@
         \setcounter{ProblemCounter}{#1}
     \fi
     \section{Problem \arabic{ProblemCounter} : #2}
-    \enterProblemHeader{ProblemCounter}
-    }
-    {
-    \exitProblemHeader{ProblemCounter}
-    }
+    }{\stepcounter{ProblemCounter}}
