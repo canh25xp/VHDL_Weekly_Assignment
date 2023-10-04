@@ -14,9 +14,14 @@
 \RequirePackage{listings}
 \RequirePackage{subcaption}
 \RequirePackage{extramarks}
+\RequirePackage{fancyhdr}
+\RequirePackage{blindtext}
 
 % =============Settings=============
-\geometry{margin=2cm}
+\geometry{
+    margin=2cm,
+    headheight=15pt
+    }
 
 \ctikzset{logic ports=ieee}
 
@@ -25,6 +30,11 @@
 \setcounter{secnumdepth}{0}
 \newcounter{ProblemCounter}
 \setcounter{ProblemCounter}{1}
+
+\pagestyle{fancy}
+\fancyhead{} % clear all header fields
+\fancyhead[L]{Digital Design using VHDL}
+\fancyhead[R]{Prof. Vo Le Cuong}
 
 % =============Problem Environment=============
 \newenvironment{problem}[2][-1]{
