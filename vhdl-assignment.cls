@@ -16,12 +16,15 @@
 \RequirePackage{extramarks}
 \RequirePackage{fancyhdr}
 \RequirePackage{blindtext}
+\RequirePackage{hyperref}
 
 % =============Settings=============
 \geometry{
     margin=2cm,
     headheight=15pt
     }
+
+\setlength{\parindent}{0pt}
 
 \ctikzset{logic ports=ieee}
 
@@ -43,3 +46,15 @@
     \fi
     \section{Problem \arabic{ProblemCounter} : #2}
     }{\stepcounter{ProblemCounter}}
+
+% =============Commands=============
+\newcommand{\note}[1]{\noindent\textit{NOTE : #1}}
+
+% =============Shapes=============
+\tikzset{mux_4_to_1/.style={muxdemux, muxdemux def={NL=4, NB=2, NR=1}}}
+\tikzset{decoder_3_to_8/.style={muxdemux, muxdemux def={NL=3, NB=0, NT=0, NR=8, Rh=8, w=4}}}
+\tikzset{encoder_8_to_3/.style={muxdemux, muxdemux def={NL=8, NB=0, NT=0, NR=3, Rh=8, w=4}}}
+\tikzset{D_FF/.style={flipflop, flipflop def={t1=D, t6=Q, t4={\ctikztextnot{Q}},td=rst, c2=1}}}
+\tikzset{T_FF/.style={flipflop, flipflop def={t1=T, t6=Q, t4={\ctikztextnot{Q}},td=rst, c2=1}}}
+\tikzset{SR_FF/.style={flipflop, flipflop def={t1=S, t3=R, t6=Q, t4={\ctikztextnot{Q}},td=rst, c2=1}}}
+\tikzset{JK_FF/.style={flipflop, flipflop def={t1=J, t3=K, t6=Q, t4={\ctikztextnot{Q}},td=rst, c2=1}}}

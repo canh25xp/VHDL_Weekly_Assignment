@@ -135,7 +135,6 @@
         
         \begin{figure}[H]
             \begin{circuitikz}
-                \tikzset{mux_4_to_1/.style={muxdemux, muxdemux def={NL=4, NB=2, NR=1}}}
                 \node[mux_4_to_1] (Mux0) {MUX};
                 \node[right] (F) at (Mux0.rpin 1){$F$};
                 \node[left] (i0) at (Mux0.lpin 1){$i0$};
