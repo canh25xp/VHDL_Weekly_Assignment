@@ -50,6 +50,13 @@
 % =============Commands=============
 \newcommand{\note}[1]{\noindent\textit{NOTE : #1}}
 
+\newcommand{\verilog}[2][Verilog code]{
+    \noindent\begin{minipage}{\linewidth}
+        \lstinputlisting[language=Verilog,caption=#1, numbers=left, frame=lines, captionpos=b]{#2}
+    \end{minipage}
+
+}
+
 % =============Shapes=============
 \tikzset{mux_4_to_1/.style={muxdemux, muxdemux def={NL=4, NB=2, NR=1}}}
 \tikzset{decoder_3_to_8/.style={muxdemux, muxdemux def={NL=3, NB=0, NT=0, NR=8, Rh=8, w=4}}}
