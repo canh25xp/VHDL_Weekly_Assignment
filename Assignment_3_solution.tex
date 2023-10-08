@@ -4,8 +4,6 @@
 \title{Assignment 3 : Structural Model}
 \date{October 8, 2023}
 
-% ==========================================Begin==========================================
-
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
@@ -13,14 +11,77 @@
 \begin{problem}{Write testbench for all problems in Assignment 2}
     \subsection*{1. Problem 1}
     \verilog[Problem 1 testbench]{src/Assignment_1_Problem_1_tb.v}
+    Notice how the input I is defined to be 5 bits wide (line 2).
+    This is to prevent the for loop (line 6) looping infinitely.
+    Because if I is only 4bits, the variable itself never exceed 15.
+    This is completely optional, alternatively, you can manually break the simulation at a desire time point,
+    by typing the command "\verb|run 100|" in the transcript command windows.
+    
+    The above testbench should output something like following:
+\begin{lstlisting}[caption=Problems 1 Testbench Output]
+#                    5 I=00000  F=1
+#                   10 I=00001  F=1
+#                   15 I=00010  F=0
+#                   20 I=00011  F=0
+#                   25 I=00100  F=1
+#                   30 I=00101  F=1
+#                   35 I=00110  F=1
+#                   40 I=00111  F=1
+#                   45 I=01000  F=0
+#                   50 I=01001  F=0
+#                   55 I=01010  F=0
+#                   60 I=01011  F=0
+#                   65 I=01100  F=0
+#                   70 I=01101  F=0
+#                   75 I=01110  F=0
+#                   80 I=01111  F=0
+\end{lstlisting}
+
     \subsection*{2. 4-to-1 Multiplexer}
-    \subsection*{3. Hald Adder}
+    \verilog[4-to-1 Multiplexer testbench]{src/Assignment_1_Problem_2_tb.v}
+\begin{lstlisting}[caption=4-to-1 Multiplexer Testbench Output]
+#                    5 IN0= 1, IN1= 0, IN2= 1, IN3= 0
+#                   10 S1 = 0, S0 = 0, OUTPUT = 1
+#                   15 S1 = 0, S0 = 1, OUTPUT = 0
+#                   20 S1 = 1, S0 = 0, OUTPUT = 1
+#                   25 S1 = 1, S0 = 1, OUTPUT = 0
+\end{lstlisting}
+
+    \subsection*{3. Half Adder}
+    \verilog[Half Adder testbench]{src/Assignment_1_Problem_3_Half_Adder_tb.v}
+\begin{lstlisting}[caption=Half Adder Testbench Output]
+#                    0 X= 0, Y=0, S= 0, C= 0
+#                    5 X= 0, Y=1, S= 1, C= 0
+#                   10 X= 1, Y=0, S= 1, C= 0
+#                   15 X= 1, Y=1, S= 0, C= 1
+\end{lstlisting}
+
     \subsection*{4. Full Adder}
+    \verilog[Full Adder testbench]{src/Assignment_1_Problem_3_Full_Adder_tb.v}
+\begin{lstlisting}[caption=Full Adder Testbench Output]
+#                    0 X= 0, Y=0, Ci= 0, S= 0, Co= 0
+#                    5 X= 0, Y=0, Ci= 1, S= 1, Co= 0
+#                   10 X= 0, Y=1, Ci= 0, S= 1, Co= 0
+#                   15 X= 0, Y=1, Ci= 1, S= 0, Co= 1
+#                   20 X= 1, Y=0, Ci= 0, S= 1, Co= 0
+#                   25 X= 1, Y=0, Ci= 1, S= 0, Co= 1
+#                   30 X= 1, Y=1, Ci= 0, S= 0, Co= 1
+#                   35 X= 1, Y=1, Ci= 1, S= 1, Co= 1    
+\end{lstlisting}
+    
     \subsection*{5. 4-bit Ripple Carry Adder}
+    \verilog[4-bit Ripple Carry Adder testbench]{src/Assignment_1_Problem_3_Ripple_Carry_Adder_tb.v}
+\begin{lstlisting}[caption=Full Adder Testbench Output]
+#                    0 X= 0000, Y=0000, Ci= 0, S= 0000, Co= 0
+#                    5 X= 0011, Y=0100, Ci= 0, S= 0111, Co= 0
+#                   10 X= 0010, Y=0101, Ci= 0, S= 0111, Co= 0
+#                   15 X= 1001, Y=1001, Ci= 0, S= 0010, Co= 1
+#                   20 X= 1010, Y=1111, Ci= 0, S= 1001, Co= 1
+#                   25 X= 1010, Y=0101, Ci= 1, S= 0000, Co= 1   
+\end{lstlisting}
 \end{problem}
 
-
-
+\newpage
 \begin{problem}{8-to-3 Encoder and 3-to-8 Decoder}
     \begin{enumerate}
         \item Construct truth table.
@@ -71,6 +132,7 @@
     \end{figure}
 \end{problem}
 
+\newpage
 \begin{problem}{Flip-flops : D-FF, T-FF, JK-FF, SR-FF}
     \begin{enumerate}
         \item Construct truth table.

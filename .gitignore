@@ -6,6 +6,7 @@
 *.log
 *.synctex.gz
 *.bak
+*.wlf
 
 Assignment/
 src/work

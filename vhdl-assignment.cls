@@ -54,21 +54,21 @@
 
 % Set code highlight style
 \lstdefinestyle{code_highlight}{
-    backgroundcolor=\color{white},   
+    backgroundcolor=\color{white},
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{gray},
     stringstyle=\color{cyan},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,         
-    breaklines=true,       
-    captionpos=b,               
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=5pt,                  
-    showspaces=false,                
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2,
     frame=lines
     }
@@ -91,7 +91,7 @@
 % Create note
 \newcommand{\note}[1]{\noindent\textit{NOTE : #1}}
 
-% Listing verilog code
+% Listing verilog code. This command makes sure every lines of code stay in the same page
 \newcommand{\verilog}[2][Verilog code]{
     \noindent\begin{minipage}{\linewidth}
         \lstinputlisting[language=Verilog, caption=#1]{#2}
