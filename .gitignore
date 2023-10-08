@@ -8,3 +8,6 @@
 *.bak
 
 Assignment/
+src/work
+src/modelsim.ini
+src/transcript
