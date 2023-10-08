@@ -58,7 +58,7 @@
     commentstyle=\color{codegreen},
     keywordstyle=\color{magenta},
     numberstyle=\tiny\color{gray},
-    stringstyle=\color{codepurple},
+    stringstyle=\color{cyan},
     basicstyle=\ttfamily\footnotesize,
     breakatwhitespace=false,         
     breaklines=true,       
@@ -72,7 +72,7 @@
     tabsize=2,
     frame=lines
     }
-    
+
 \lstset{style=code_highlight}
 
 % =====================================================
