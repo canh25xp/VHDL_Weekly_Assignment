@@ -1,8 +1,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{vhdl-assignment}[2023 VHDL Assignment]
 \LoadClass[12pt, a4paper]{article}
-
-% =============Packages=============
+% =====================================================
+% Packages
+% =====================================================
 \RequirePackage{graphicx}
 \RequirePackage[label=corner]{karnaugh-map}
 \RequirePackage{mathtools}
@@ -17,8 +18,13 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{blindtext}
 \RequirePackage{hyperref}
+\RequirePackage{xcolor}
 
-% =============Settings=============
+% =====================================================
+% Settings
+% =====================================================
+
+% Set page size and margin
 \geometry{
     margin=2cm,
     headheight=15pt
@@ -26,20 +32,52 @@
 
 \setlength{\parindent}{0pt}
 
+% Set logic gate style
 \ctikzset{logic ports=ieee}
 
 \author{Ngo Van Canh}
 
+% Set problem counter
 \setcounter{secnumdepth}{0}
 \newcounter{ProblemCounter}
 \setcounter{ProblemCounter}{1}
 
+% Set header
 \pagestyle{fancy}
-\fancyhead{} % clear all header fields
+\fancyhead{}
 \fancyhead[L]{Digital Design using VHDL}
 \fancyhead[R]{Prof. Vo Le Cuong}
 
-% =============Problem Environment=============
+% Define custom colors
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+% Set code highlight style
+\lstdefinestyle{code_highlight}{
+    backgroundcolor=\color{white},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{gray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,       
+    captionpos=b,               
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=lines
+    }
+    
+\lstset{style=code_highlight}
+
+% =====================================================
+% Problem Environment
+% =====================================================
 \newenvironment{problem}[2][-1]{
     \ifnum#1>0
         \setcounter{ProblemCounter}{#1}
@@ -47,17 +85,23 @@
     \section{Problem \arabic{ProblemCounter} : #2}
     }{\stepcounter{ProblemCounter}}
 
-% =============Commands=============
+% =====================================================
+% Commands
+% =====================================================
+% Create note
 \newcommand{\note}[1]{\noindent\textit{NOTE : #1}}
 
+% Listing verilog code
 \newcommand{\verilog}[2][Verilog code]{
     \noindent\begin{minipage}{\linewidth}
-        \lstinputlisting[language=Verilog,caption=#1, numbers=left, frame=lines, captionpos=b]{#2}
+        \lstinputlisting[language=Verilog, caption=#1]{#2}
     \end{minipage}
 
 }
 
-% =============Shapes=============
+% =====================================================
+% Shapes
+% =====================================================
 \tikzset{mux_4_to_1/.style={muxdemux, muxdemux def={NL=4, NB=2, NR=1}}}
 \tikzset{decoder_3_to_8/.style={muxdemux, muxdemux def={NL=3, NB=0, NT=0, NR=8, Rh=8, w=4}}}
 \tikzset{encoder_8_to_3/.style={muxdemux, muxdemux def={NL=8, NB=0, NT=0, NR=3, Rh=8, w=4}}}

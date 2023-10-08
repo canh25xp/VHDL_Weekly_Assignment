@@ -1,0 +1,117 @@
+\documentclass{vhdl-assignment}
+\usetikzlibrary{circuits.logic.IEC,calc}
+
+\title{Assignment 3 : Structural Model}
+\date{October 8, 2023}
+
+% ==========================================Begin==========================================
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{problem}{Write testbench for all problems in Assignment 2}
+    \subsection*{1. Problem 1}
+    \verilog[Problem 1 testbench]{src/Assignment_1_Problem_1_tb.v}
+    \subsection*{2. 4-to-1 Multiplexer}
+    \subsection*{3. Hald Adder}
+    \subsection*{4. Full Adder}
+    \subsection*{5. 4-bit Ripple Carry Adder}
+\end{problem}
+
+
+
+\begin{problem}{8-to-3 Encoder and 3-to-8 Decoder}
+    \begin{enumerate}
+        \item Construct truth table.
+        \item Determine output function.
+        \item Write Verilog code and testbench for that circuit.
+    \end{enumerate}
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.5\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[decoder_3_to_8] (Decoder0) {Decoder};
+                \node[left] (i0) at (Decoder0.lpin 1) {$i0$};
+                \node[left] (i1) at (Decoder0.lpin 2) {$i1$};
+                \node[left] (i2) at (Decoder0.lpin 3) {$i2$};
+                \node[right] (y0) at (Decoder0.rpin 1) {$y0$};
+                \node[right] (y1) at (Decoder0.rpin 2) {$y1$};
+                \node[right] (y2) at (Decoder0.rpin 3) {$y2$};
+                \node[right] (y3) at (Decoder0.rpin 4) {$y3$};
+                \node[right] (y4) at (Decoder0.rpin 5) {$y4$};
+                \node[right] (y5) at (Decoder0.rpin 6) {$y5$};
+                \node[right] (y6) at (Decoder0.rpin 7) {$y6$};
+                \node[right] (y7) at (Decoder0.rpin 8) {$y7$};
+            \end{circuitikz}
+            \caption{3-to-8 Decoder}
+        \end{subfigure}
+        \begin{subfigure}{0.4\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[encoder_8_to_3] (Encoder0) {Encoder};
+                \node[left] (i0) at (Encoder0.lpin 1) {$i0$};
+                \node[left] (i1) at (Encoder0.lpin 2) {$i1$};
+                \node[left] (i2) at (Encoder0.lpin 3) {$i2$};
+                \node[left] (i3) at (Encoder0.lpin 4) {$i3$};
+                \node[left] (i4) at (Encoder0.lpin 5) {$i4$};
+                \node[left] (i5) at (Encoder0.lpin 6) {$i5$};
+                \node[left] (i6) at (Encoder0.lpin 7) {$i6$};
+                \node[left] (i7) at (Encoder0.lpin 8) {$i7$};
+                \node[right] (y0) at (Encoder0.rpin 1) {$y0$};
+                \node[right] (y1) at (Encoder0.rpin 2) {$y1$};
+                \node[right] (y2) at (Encoder0.rpin 3) {$y2$};
+            \end{circuitikz}
+            \caption{8-to-3 Encoder}
+        \end{subfigure}
+
+        \caption{Encoder and Decoder}
+    \end{figure}
+\end{problem}
+
+\begin{problem}{Flip-flops : D-FF, T-FF, JK-FF, SR-FF}
+    \begin{enumerate}
+        \item Construct truth table.
+        \item Determine output function.
+        \item Write Verilog code and testbench for that circuit.
+    \end{enumerate}
+
+    \begin{figure}[H]
+        \centering
+        \begin{subfigure}{0.2\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[D_FF]{};
+            \end{circuitikz}
+            \caption{D Flip-flop}
+        \end{subfigure}
+        \begin{subfigure}{0.2\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[T_FF]{};
+            \end{circuitikz}
+            \caption{T Flip-flop}
+        \end{subfigure}
+        \begin{subfigure}{0.2\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[SR_FF]{};
+            \end{circuitikz}
+            \caption{SR Flip-flop}
+        \end{subfigure}
+        \begin{subfigure}{0.2\textwidth}
+            \centering
+            \begin{circuitikz}
+                \node[JK_FF]{};
+            \end{circuitikz}     
+            \caption{JK Flip-flop}
+        \end{subfigure}
+        \caption{Flip-flops}
+    \end{figure}
+\end{problem}
+
+\note{Using structural model. Flip flops include reset signal.}
+
+\end{document}
