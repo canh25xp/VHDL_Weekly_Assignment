@@ -15,7 +15,7 @@
     This is to prevent the for loop (line 6) looping infinitely.
     Because if I is only 4bits, the variable itself never exceed 15.
     This is completely optional, alternatively, you can manually break the simulation at a desire time point,
-    by typing the command "\verb|run 100|" in the transcript command windows.
+    by typing the command "\verb|run 100|" in the transcript command windows (100 is the duration you want to run, change it to suit the simulation) 
     
     The above testbench should output something like following:
 \begin{lstlisting}[caption=Problems 1 Testbench Output]
@@ -47,6 +47,7 @@
 #                   25 S1 = 1, S0 = 1, OUTPUT = 0
 \end{lstlisting}
 
+    \pagebreak
     \subsection*{3. Half Adder}
     \verilog[Half Adder testbench]{src/Assignment_1_Problem_3_Half_Adder_tb.v}
 \begin{lstlisting}[caption=Half Adder Testbench Output]
@@ -130,6 +131,51 @@
 
         \caption{Encoder and Decoder}
     \end{figure}
+
+    \subsection*{a. Decoder}
+    \begin{table}[H]
+        \begin{displaymath}
+            \begin{array}{c c c|c c c c c c c c}
+                i0 & i1 & i2 & y0 & y1 & y2 & y3 & y4 & y5 & y6 & y7 \\
+                \hline
+                0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                0 & 0 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+                0 & 1 & 1 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+                1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+                1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+                1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+            \end{array}
+        \end{displaymath}
+        \caption[short]{Decoder 3-to-8 Truth Table}
+    \end{table}
+    \begin{equation*}
+        \Rightarrow
+        \begin{cases}
+            y0=i0'i1'i2' \\
+            y1=i0'i1'i2 \\
+            y2=i0'i1i2' \\
+            y3=i0'i1i2 \\
+            y4=i0i1'i2' \\
+            y5=i0i1'i2 \\
+            y6=i0i1i2' \\
+            y7=i0i1i2 \\
+        \end{cases}
+    \end{equation*}
+
+    \verilog[Decoder 3-to-8 and testbench]{src/Decoder_3_to_8.v}
+    \begin{lstlisting}[caption=Full Adder Testbench Output]
+    #
+    #
+    #
+    #
+    #
+    #   
+    \end{lstlisting}
+    \subsection*{b. Encoder}
+
+
 \end{problem}
 
 \newpage

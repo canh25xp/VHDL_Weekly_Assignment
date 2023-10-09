@@ -7,24 +7,16 @@
 \maketitle
 \thispagestyle{fancy}
 
-\begin{problem}{16-bit Carry Look Ahead Adder}
-    Write code Verilog: Design code and testbench code
-
-    \note{A 16-bit Carry Look Ahead Adder can be formed by cascading four
-    4-bit Carry Look Ahead Adder}
-
-\end{problem}
+Design code, testbench and simulation the following module
 
 \begin{problem}{4-bit Ripple Carry Counter}
-    Write Verilog code and testbench. Simulate your design.
-
-    \note{Using T - flipflop (structural model) you designed in Assignment 3.}
+    \note{Using T - flipflop (Structural model) that you designed in Assignment 3.}
 
     \begin{figure}[H]
         \centering
         \begin{circuitikz}
             \node[T_FF_neg] (T0) at (0,0) {T0};
-            \node[T_FF_neg] (T1) at (3,0) {T1};
+            \node[T_FF_neg] (T1) at (3,0) {T1}; 
             \node[T_FF_neg] (T2) at (6,0) {T2};
             \node[T_FF_neg] (T3) at (9,0) {T3};
 
@@ -56,14 +48,10 @@
 \end{problem}
 
 \begin{problem}{4-bit Gray Counter}
-    Write code Verilog: Design code and simulation by testbench.
-
-    \note{Note: Using \$display syntax and screenshot waveform.}
-
+    \note{The counter has synchrounous reset}
 \end{problem}
 
 \begin{problem}{BCD to 7 Segment Display Decoder}
-    Write code Verilog: Design code and simulation by testbench.
     \begin{figure}[H]
         \centering
         \includegraphics{assets/GrayCounter.jpg}
