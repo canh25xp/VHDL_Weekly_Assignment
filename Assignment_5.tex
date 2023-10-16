@@ -7,12 +7,15 @@
 \maketitle
 \thispagestyle{fancy}
 
-\begin{problem}{Verilog tutorial: Create code coverage report in ModelSim}
-    Instruction : \href{https://youtu.be/vkzd5ckQ5ZQ}{Code coverage report in verilog tutorial}
+\begin{problem}{Learn to Create code coverage report in ModelSim}
+    Follow the Instruction : \href{https://youtu.be/vkzd5ckQ5ZQ}{Youtube Tutorial}
+    or
+    \href{https://github.com/canh25xp/VHDL_Weekly_Assignment/wiki/Code-Coverage-Report-Tutorial}{Text tutorial}
+
 \end{problem}
 
 \begin{problem}{}
-    For Each of the circuit above :
+    For Each of the following circuits :
     \begin{itemize}
         \item Design a verilog module using Dataflow model.
         \item Write testbench for it, using Use \$monitor or \$dislay syntax.
@@ -20,12 +23,23 @@
     \end{itemize}
 
     \begin{enumerate}
-        \item Full Adder n-bit
-        \item Carry Look Ahead Adder n-bit
-        \item Gray Counter n-bit
-        \item Full Adder n-bit
-        \item 4-bit Comparator from 2-bit Comparator
+        \item n-bit Full Adder
+        \item n-bit Ripple Carry Counter
+        \item n-bit Gray Counter
+        \item 4-bit Magnitude Comparator
     \end{enumerate}
+
+FYI : A magnitude comparator checks if one number is greater than, equal to, or less than
+another number. Design a 4-bit magnitude comparator that has the following
+specifications:
+
+\begin{itemize}
+    \item Inputs A and B are 4-bit inputs. No x or z values will appear on A and B inputs
+    \item Output A\_gt\_B is true if A is greater than B
+    \item Output A\_lt\_B is true if A is less than B
+    \item Output A\_eq\_B is true if A is equal to B
+\end{itemize}
+
 \end{problem}
 
 \end{document}
