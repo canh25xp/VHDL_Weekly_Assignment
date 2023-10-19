@@ -19,10 +19,19 @@
 \RequirePackage{blindtext}
 \RequirePackage{hyperref}
 \RequirePackage{xcolor}
+\RequirePackage{titling}
 
 % =====================================================
 % Settings
 % =====================================================
+
+% Modify title
+\pretitle{\begin{center}\LARGE}
+\posttitle{\par\end{center}\vskip0.5em}
+\preauthor{}
+\postauthor{}
+\predate{\begin{center}\large}
+\postdate{\par\end{center}}
 
 % Set page size and margin
 \geometry{
@@ -35,7 +44,7 @@
 % Set logic gate style
 \ctikzset{logic ports=ieee}
 
-\author{Ngo Van Canh}
+\author{}
 
 % Set problem counter
 \setcounter{secnumdepth}{0}
