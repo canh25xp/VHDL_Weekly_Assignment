@@ -1,0 +1,128 @@
+\documentclass{vhdl-assignment}
+
+\title{Final Projects}
+\date{2023}
+
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+\begin{project}{Implement CNN on FPGA}
+    \subsection*{1. Description}
+    Research simple Neural network in image processing, recognize handwritten digits by using Verilog language and upload design to FPGA kit.
+    \subsection*{2. References and Documents}
+    \begin{itemize}
+        \item Paper : \href{https://ieeexplore.ieee.org/document/8656778}{FPGA Implementation of Convolutional Neural Networks with Fixed-Point Calculations}
+        \item Source code : \href{https://github.com/ZFTurbo/Verilog-Generator-of-Neural-Net-Digit-Detector-for-FPGA}{Verilog Generator of Neural Net Digit Detector for FPGA}
+    \end{itemize}
+    \subsection*{3. Requirements}
+    \begin{enumerate}
+        \item Learn about CNN theory, simulate, evaluate design results when implementing on software (Python)
+        \item Design, verify modules when switching to Verilog code.
+        \item Implement your design on hardware: FPGA kit, camera, monitor.
+    \end{enumerate}
+\end{project}
+
+\pagebreak
+\begin{project}{Design I2C controller core}
+    \subsection*{1. Description}
+    I2C protocol was invented by Philips semiconductors in the 1980s, to provide easy onboard communications between a CPU and various peripheral chips.
+    I2C stands for Inter-Integrated Circuit.
+    It is used for attaching lower-speed peripheral ICs to microcontrollers in short-distance communication.
+    Low-speed peripherals include external EEPROMs, digital sensors, I2C LCD, and temperature sensors.
+
+    Design I2C Master Core: provides an interface between a Wishbone Master and an I2C bus, compatible with Philips I2C bus standard and Wishbone bus.
+
+    \subsection*{2. References and Documents}
+    \begin{itemize}
+        \item \href{https://vdocument.in/bus-i2c-philips.html}{I2C Bus Specification, Philips Semiconductor, version 2.1, January 2000}
+        \item Paper : \href{https://ieeexplore.ieee.org/document/6577141}{Implementation of I2C master bus controller on FPGA}
+        \item Source code : \href{https://github.com/trondd/oc-i2c}{I2C controller core}
+    \end{itemize}
+
+    \subsection*{3. Requirements}
+    \begin{enumerate}
+        \item Build Specification of the design based on the documentations provided: I2C bus standard, Wishbone bus.\\
+        $\Rightarrow$ System modeling / design by using diagram, FSM, ASM, FSMD, ASMD,\dots\\
+        $\Rightarrow$ Describe the input / output signals of each module / block.
+        \item Design I2C Master Core: provides an interface between a Wishbone Master and an I2C bus.\\
+        $\Rightarrow$ Compatible with Philips I2C bus standard.\\
+        $\Rightarrow$ Compatible with Wishbone bus.
+        \item Verify your design.
+        \item Evaluate the results of the device when deployed on FPGA: by simulation, FPGA board, evaluate resource consumption.
+    \end{enumerate}
+\end{project}
+
+\pagebreak
+\begin{project}{Design FFT/IFFT 128 points IP core}
+    \subsection*{1. Description}
+    FFT is an algorithm for the effective Discrete Fourier Transform calculation.
+    \subsection*{2. References and Documentations}
+    \begin{itemize}
+        \item \href{https://github.com/freecores/pipelined_fft_128/blob/master/DOC/fft128_um.pdf}{Pipelined FFT/IFFT 128 points (Fast Fourier Transform) IP Core User Manual}
+        \item Source code : \href{https://github.com/freecores/pipelined_fft_128}{Pipelined FFT/IFFT 128 points processor}
+    \end{itemize}
+    \subsection*{3. Requirements}
+    \begin{enumerate}
+        \item Build Specification of the design
+        \begin{itemize}
+            \item System modeling / design by using diagram, FSM, ASM, FSMD, ASMD,\dots
+            \item Describe the input / output signals of each module / block.
+        \end{itemize}
+        \item Implement Algorithm on C++ / Python
+        \item Verify your RTL design.
+        \item Evaluate the results of the device when deployed on FPGA: by simulation, FPGA board, evaluate resource consumption.
+    \end{enumerate}
+\end{project}
+
+\pagebreak
+\begin{project}{Design a RISC Stored-Program Machine}
+    \subsection*{1. Description}
+    Reduced instruction-set computers (RISC) are designed to have a small set of instructions that execute in short clock cycles, with a small number of cycles per instruction.
+    RISC machines are optimized to achieve efficient pipelining of their instruction streams.
+    The machine also serves as a starting point for developing architectural variants and a more robust instruction set.
+    Designers make high-level tradeoffs in selecting an architecture that serves an application.
+    Once an architecture has been selected, a circuit that has sufficient performance (speed) must be synthesized.
+    Hardware description languages (HDLs) play a key role in this process by modeling the system and serving as a descriptive medium that can be used by a synthesis tool.
+    \subsection*{2. References and Documents}
+    \begin{itemize}
+        \item Book : Advanced Digital Design with Verilog HDL - Chapter 7. Design and Synthesis of Datapath Controller - Section 7.3 Design and Synthesis of a RISC Stored Program Machine (Page 355)
+        \item Source code : In the book 
+    \end{itemize}
+    \note{The book can be found in Class's Teams : General>Files>Class Materials>books}
+    \subsection*{3. Requirements}
+    \begin{enumerate}
+        \item Implement the design according to the instructions in the document.
+        \item Build Specification of the design based on the documentations provided.
+        \begin{itemize}
+            \item System modeling/design by diagram, FSM, ASM, ASMD, FSMD,\dots
+            \item Describe the input/output signals of each module.
+        \end{itemize}
+        \item Verify your design.
+        \item Evaluate the results of the device when deployed on FPGA: by simulation, FPGA kit, evaluate resource consumption.
+    \end{enumerate}
+\end{project}
+
+\pagebreak
+\begin{project}{Implement a UART modem}
+    \subsection*{1. Description}
+    UART, or Universal Asynchronous Receiver-Transmitter is a computer hardware device for asynchronous serial communication capable of both receive and transmit data.
+    \subsection*{2. References and Documents}
+    \begin{itemize}
+        \item Book : Advanced Digital Design with Verilog HDL - Chapter 7. Design and Synthesis of Datapath Controller - Section 7.4 Design Example: UART (Page 378)
+        \item Source code : in the book
+    \end{itemize}
+    \subsection*{3. Requirements}
+    \begin{enumerate}
+        \item Modeling both UART's receiver and transmitter, follow the instructions in the document
+        \item Build Specification of the design based on the documentations provided.
+        \begin{itemize}
+            \item System modeling/design by diagram, FSM, ASM, ASMD, FSMD,\dots
+            \item Describe the input/output signals of each module.
+        \end{itemize}
+        \item Verify your design.
+        \item Evaluate the results of the device when deployed on FPGA: by simulation, FPGA kit, evaluate resource consumption.
+    \end{enumerate}
+\end{project}
+
+\end{document}

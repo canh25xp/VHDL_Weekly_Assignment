@@ -25,13 +25,14 @@
 % Settings
 % =====================================================
 
-% Modify title
+% Modify title : suppress author in maketitle
 \pretitle{\begin{center}\LARGE}
 \posttitle{\par\end{center}\vskip0.5em}
 \preauthor{}
 \postauthor{}
 \predate{\begin{center}\large}
 \postdate{\par\end{center}}
+\author{}
 
 % Set page size and margin
 \geometry{
@@ -44,12 +45,10 @@
 % Set logic gate style
 \ctikzset{logic ports=ieee}
 
-\author{}
-
 % Set problem counter
 \setcounter{secnumdepth}{0}
-\newcounter{ProblemCounter}
-\setcounter{ProblemCounter}{1}
+\newcounter{MyCounter}
+\setcounter{MyCounter}{1}
 
 % Set header
 \pagestyle{fancy}
@@ -89,10 +88,21 @@
 % =====================================================
 \newenvironment{problem}[2][-1]{
     \ifnum#1>0
-        \setcounter{ProblemCounter}{#1}
+    \setcounter{MyCounter}{#1}
     \fi
-    \section{Problem \arabic{ProblemCounter} : #2}
-    }{\stepcounter{ProblemCounter}}
+    \section{Problem \arabic{MyCounter} : #2}
+    }{\stepcounter{MyCounter}}
+    
+% =====================================================
+% Project Environment
+% =====================================================
+% Project and Problem should not be use simultaneously
+\newenvironment{project}[2][-1]{
+    \ifnum#1>0
+    \setcounter{MyCounter}{#1}
+    \fi
+    \section{Project \arabic{MyCounter} : #2}
+    }{\stepcounter{MyCounter}}
 
 % =====================================================
 % Commands
