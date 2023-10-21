@@ -24,7 +24,6 @@
 % =====================================================
 % Settings
 % =====================================================
-
 % Modify title : suppress author in maketitle
 \pretitle{\begin{center}\LARGE}
 \posttitle{\par\end{center}\vskip0.5em}
@@ -82,6 +81,12 @@
     }
 
 \lstset{style=code_highlight}
+
+% Set hyperlink style
+\hypersetup{
+    colorlinks=true,
+    urlcolor=cyan
+}
 
 % =====================================================
 % Problem Environment
