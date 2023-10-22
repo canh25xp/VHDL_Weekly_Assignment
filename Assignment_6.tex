@@ -1,27 +1,31 @@
 \documentclass{vhdl-assignment}
 
 \title{Assignment 6}
-\date{2023}
+\date{October 23, 2023}
 
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
 
-\begin{problem}{Use data flow model, screenshot desgin code, testbench code, waveform, code coverage report}
-    \subsection*{1. Design circuits two numbers 4-bit}
-    \begin{verbatim}
-        Input : [3:0]A, B
-        Output : 
-        A_lt_B = 1 if A < B.
-        A_eq_B = 1 if A = B.
-        A_gt_B = 1 if A > B.
-    \end{verbatim}
+\begin{problem}{4-to-1 Multiplexer using Data Flow}
+    \begin{itemize}
+        \item Design a 4-to-1 Multiplexer using dataflow statements.
+        \item Write testbench and simulate your design.
+    \end{itemize}
+    \note{You can re-use the testbench module that you created earlier for the Structural 4-to-1 Multiplexer in Assignment 3.
+    The simulation result should be the same.}
+\end{problem}
 
-    \subsection*{2. Design and compare 4 – bit Full Adder with Carry Look Ahead Adder 4 – bit about: Structure, delay, speed}
+\begin{problem}{4-bit Carry Lookahead Adder using Data Flow}
+    \begin{itemize}
+        \item Design a 4-bit Carry LookAhead Adder using dataflow statements.
+        \item Write testbench and simulate your design.
+        \item Compare it with the 4-bit Ripple Carry Adder that you created in Assignment 3 (Structure, delay, speed)
+    \end{itemize}
     \begin{figure}[H]
         \centering
         \includegraphics{assets/CarryLookAheadAdder.jpg}
-    \end{figure}
+    \end{figure} 
 \end{problem}
 
 \begin{problem}{Answer the following questions}
