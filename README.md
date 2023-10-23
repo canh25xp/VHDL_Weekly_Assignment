@@ -15,7 +15,7 @@ latexmk -pdf -auxdir=.tmp -outdir=build Assignment_1.tex
 - [Assignment 3](./build/Assignment_3.pdf) -> [Solution](./build/Assignment_3_solution.pdf)
 - [Assignment 4](./build/Assignment_4.pdf)
 - [Assignment 5](./build/Assignment_5.pdf)
-- [Assignment 6 (Updating)](./build/Assignment_6.pdf)
+- [Assignment 6](./build/Assignment_6.pdf)
 - [Assignment 7 (Updating)](./build/Assignment_7.pdf)
 - [Assignment 8 (Updating)](./build/Assignment_8.pdf)
 - [Assignment 9 (Updating)](./build/Assignment_9.pdf)
